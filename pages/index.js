@@ -2,8 +2,9 @@ import * as React from "react";
 import Box from "@mui/material/Box";
 import { DataGrid } from "@mui/x-data-grid";
 
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
+const value = (params) => {
+  return params.row.options == 'Topi' ? 'auto' : null;
+}
 
 const columns = [
   { field: "id", headerName: "ID", width: 90 },
@@ -16,13 +17,11 @@ const columns = [
     valueOptions: ['Topi', 'Baju', 'Celana']
   },
   {
-    field: "auto",
+    field: 'auto',
     headerName: "Auto",
     width: 150,
-    valueGetter: (params) => {
-      return params.row.options == 'Topi' ? params.row.lastName : null;
-    },
     editable: true,
+    valueGetter: value,
   },
   {
     field: "test",
@@ -77,14 +76,14 @@ const rows = [
 
 export default function Home() {
   return (
-    <Box sx={{ height: 400, width: "100%" }}>
+    <Box sx={{ height: 600, width: "100%" }}>
       <DataGrid
         rows={rows}
         columns={columns}
         initialState={{
           pagination: {
             paginationModel: {
-              pageSize: 5,
+              pageSize: 10,
             },
           },
         }}
