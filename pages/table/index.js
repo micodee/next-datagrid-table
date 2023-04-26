@@ -32,7 +32,7 @@ export default function Table() {
     };
     setRows([...rows, newRow]);
   }
-  console.log(data.firstName);
+  console.log(data.filter((item) => item.lastName));
 
   const columns = [
     { field: 'id', headerName: 'ID', width: 70, editable: true },
